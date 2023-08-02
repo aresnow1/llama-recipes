@@ -6,28 +6,21 @@
 import datasets
 from .utils import Concatenator
 
-def get_preprocessed_financial(dataset_config, tokenizer, split):
-    import pdb; pdb.set_trace()
-    dataset = datasets.load_dataset("JanosAudran/financial-reports-sec", split=split)
 
-    prompt = (
-        f"Summarize this dialog:\n{{dialog}}\n---\nSummary:\n{{summary}}{{eos_token}}"
-    )
+def get_preprocessed_financial(dataset_config, tokenizer, split):
+    dataset = datasets.load_dataset("JanosAudran/financial-reports-sec", "large_full", split=split)
 
     def apply_prompt_template(sample):
         return {
-            "text": prompt.format(
-                dialog=sample["dialogue"],
-                summary=sample["summary"],
-                eos_token=tokenizer.eos_token,
-            )
+            "text": sample
         }
 
-    dataset = dataset.map(apply_prompt_template, remove_columns=list(dataset.features))
-        
+    dataset = dataset.map(apply_prompt_template, input_columns=["sentence"])
+
     dataset = dataset.map(
         lambda sample: tokenizer(sample["text"]),
         batched=True,
         remove_columns=list(dataset.features),
-    ).map(Concatenator(), batched=True)
+    )
+    dataset = dataset.map(Concatenator(chunk_size=1024), batched=True)
     return dataset

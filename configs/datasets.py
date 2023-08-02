@@ -31,4 +31,5 @@ class alpaca_dataset:
 class financial_dataset:
     dataset: str = "financial_dataset"
     train_split: str = "train"
-    test_split: str = "val"
+    test_split: str = "validation"
+    input_length: int = 1024
