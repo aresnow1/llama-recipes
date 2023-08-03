@@ -4,7 +4,7 @@ python llama_finetuning.py --use_peft \
   --quantization \
   --model_name meta-llama/Llama-2-7b-hf \
   --output_dir ./output_model \
-  --dataset financial_dataset \
+  --dataset function_call_dataset \
   --batch_size_training 16 \
   --micro_batch_size 4 \
   --num_epochs 1

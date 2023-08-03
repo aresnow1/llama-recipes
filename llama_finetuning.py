@@ -93,7 +93,7 @@ def main(**kwargs):
     model = LlamaForCausalLM.from_pretrained(
         train_config.model_name,
         load_in_8bit=True if train_config.quantization else None,
-        device_map="sequential",
+        device_map="auto",
     )
     
     print_model_size(model, train_config, rank if train_config.enable_fsdp else 0)
