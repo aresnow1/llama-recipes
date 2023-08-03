@@ -14,8 +14,7 @@ def get_preprocessed_financial(dataset_config, tokenizer, split):
                                   response=sample["assistantResponse"])
         }
 
-    dataset = dataset.map(apply_prompt_template,
-                          input_columns=["systemPrompt", "assistantResponse"])
+    dataset = dataset.map(apply_prompt_template)
 
     dataset = dataset.map(
         lambda sample: tokenizer(sample["text"]),
