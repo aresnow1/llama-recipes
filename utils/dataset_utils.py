@@ -10,6 +10,7 @@ from ft_datasets import (
     get_alpaca_dataset,
     get_samsum_dataset,
     get_financial_dataset,
+    get_function_call_dataset,
 )
 from typing import Optional
 
@@ -18,7 +19,8 @@ DATASET_PREPROC = {
     "alpaca_dataset": partial(get_alpaca_dataset, max_words=224),
     "grammar_dataset": get_grammar_dataset,
     "samsum_dataset": get_samsum_dataset,
-    "financial_dataset": get_financial_dataset
+    "financial_dataset": get_financial_dataset,
+    "function_call_dataset": get_function_call_dataset,
 }
 
 
