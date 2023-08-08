@@ -5,4 +5,4 @@ from .grammar_dataset import get_dataset as get_grammar_dataset
 from .alpaca_dataset import InstructionDataset as get_alpaca_dataset
 from .samsum_dataset import get_preprocessed_samsum as get_samsum_dataset
 from .financial_dataset import get_preprocessed_financial as get_financial_dataset
-from .function_call import get_preprocessed_financial as get_function_call_dataset
+from .function_call import get_preprocessed_function_call as get_function_call_dataset

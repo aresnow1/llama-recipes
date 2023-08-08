@@ -38,5 +38,5 @@ class financial_dataset:
 class function_call_dataset:
     dataset: str = "function_call_dataset"
     train_split: str = "train"
-    test_split: str = "validation"
-    input_length: int = 2048
+    test_split: str = "test"
+    input_length: int = 512
